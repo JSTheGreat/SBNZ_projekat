@@ -1,0 +1,9 @@
+sbnz\integracija\example\repository\Item$Category.class
+sbnz\integracija\example\model\Skill.class
+sbnz\integracija\example\controller\SampleAppController.class
+sbnz\integracija\example\service\KieService.class
+sbnz\integracija\example\model\SkillNode.class
+sbnz\integracija\example\repository\Item.class
+sbnz\integracija\example\LevelingGuide.class
+sbnz\integracija\example\model\Player.class
+sbnz\integracija\example\controller\SampleHomeController.class
