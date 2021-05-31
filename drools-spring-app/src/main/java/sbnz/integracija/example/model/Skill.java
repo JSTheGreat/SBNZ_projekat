@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Entity
 public class Skill {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+	
 	@ManyToOne
 	private Player player;
 	
@@ -76,6 +80,12 @@ public class Skill {
 	}
 	public void setOrientation(String orientation) {
 		this.orientation = orientation;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	public Skill(String name, SkillNode root, String type, Integer priority, String orientation) {

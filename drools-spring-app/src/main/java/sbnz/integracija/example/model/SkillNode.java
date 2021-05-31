@@ -3,13 +3,16 @@ package sbnz.integracija.example.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class SkillNode{	
 	
-	@Column(nullable = false)
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+	
+	@OneToOne
 	private Skill skill;
 	
 	@Column(nullable = false)
@@ -27,10 +30,10 @@ public class SkillNode{
 	@Column(nullable = false)
 	private Integer skillLevelNeeded;
 	
-	@Column(nullable = false)
+	@ManyToOne
 	private SkillNode parent;
 	
-	@Column(nullable = false)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "parent")
 	private List<SkillNode> children;
 	
 	@Column(nullable = false)
@@ -90,7 +93,12 @@ public class SkillNode{
 	public void setActivated(Boolean activated) {
 		this.activated = activated;
 	}
-	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public SkillNode(Skill skill, String description, Boolean essential, Boolean specific, Integer perksAvailable,
 			Integer skillLevelNeeded, SkillNode parent) {
 		super();

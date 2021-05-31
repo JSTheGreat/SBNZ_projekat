@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Entity
 public class Player {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+	
 	@Column(nullable = false)
 	private String race;
 	
@@ -43,6 +47,12 @@ public class Player {
 	}
 	public void setSkills(Set<Skill> skills) {
 		this.skills = skills;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	public Player(String race, String role) {
