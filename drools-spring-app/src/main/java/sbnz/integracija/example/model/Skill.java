@@ -5,6 +5,9 @@ import java.util.Map;
 
 import javax.persistence.*;
 
+import sbnz.integracija.example.enums.Orientation;
+import sbnz.integracija.example.enums.SkillType;
+
 @Entity
 public class Skill {
 	
@@ -31,13 +34,13 @@ public class Skill {
 	private SkillNode root;
 	
 	@Column(nullable = false)
-	private String type;
+	private SkillType type;
 	
 	@Column(nullable = false)
 	private Integer priority;
 	
 	@Column(nullable = false)
-	private String orientation;
+	private Orientation orientation;
 	
 	public Map<String, Integer> getSubsets() {
 		return subsets;
@@ -63,10 +66,10 @@ public class Skill {
 	public void setRoot(SkillNode root) {
 		this.root = root;
 	}
-	public String getType() {
+	public SkillType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(SkillType type) {
 		this.type = type;
 	}
 	public Integer getPriority() {
@@ -75,10 +78,10 @@ public class Skill {
 	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
-	public String getOrientation() {
+	public Orientation getOrientation() {
 		return orientation;
 	}
-	public void setOrientation(String orientation) {
+	public void setOrientation(Orientation orientation) {
 		this.orientation = orientation;
 	}
 	public Integer getId() {
@@ -88,7 +91,7 @@ public class Skill {
 		this.id = id;
 	}
 	
-	public Skill(String name, SkillNode root, String type, Integer priority, String orientation) {
+	public Skill(String name, SkillNode root, SkillType type, Integer priority, Orientation orientation) {
 		super();
 		this.name = name;
 		this.root = root;
