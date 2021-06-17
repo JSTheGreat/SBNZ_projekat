@@ -1,116 +1,101 @@
-package sbnz.integracija.example.model;
+package sbnz.integracija.example.dto;
 
-import javax.persistence.*;
-
-@Entity
-public class SkillNode{	
+public class SkillNodeDTO {
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
-	@OneToOne
-	private Skill skill;
+	private Integer skillId;
 	
-	@Column(nullable = false)
-	private String name;
-	
-	@Column(nullable = false)
 	private String description;
 	
-	@Column(nullable = false)
 	private Boolean essential;
 	
-	@Column(nullable = false)
 	private Boolean specific;
 	
-	@Column(nullable = false)
 	private Integer perksAvailable;
 	
-	@Column(nullable = false)
 	private Integer skillLevelNeeded;
 	
-	@Column(nullable = false)
-	private Integer position;
-	
-	@Column(nullable = false)
 	private Boolean activated;
-	
-	public Skill getSkill() {
-		return skill;
-	}
-	public void setSkill(Skill skill) {
-		this.skill = skill;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Boolean getEssential() {
-		return essential;
-	}
-	public void setEssential(Boolean essential) {
-		this.essential = essential;
-	}
-	public Boolean getSpecific() {
-		return specific;
-	}
-	public void setSpecific(Boolean specific) {
-		this.specific = specific;
-	}
-	public Integer getPerksAvailable() {
-		return perksAvailable;
-	}
-	public void setPerksAvailable(Integer perksAvailable) {
-		this.perksAvailable = perksAvailable;
-	}
-	public Integer getSkillLevelNeeded() {
-		return skillLevelNeeded;
-	}
-	public void setSkillLevelNeeded(Integer skillLevelNeeded) {
-		this.skillLevelNeeded = skillLevelNeeded;
-	}
-	public Integer getPosition() {
-		return position;
-	}
-	public void setPosition(Integer position) {
-		this.position = position;
-	}
-	public Boolean getActivated() {
-		return activated;
-	}
-	public void setActivated(Boolean activated) {
-		this.activated = activated;
-	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public SkillNode(Skill skill, String description, Boolean essential, Boolean specific, Integer perksAvailable,
-			Integer skillLevelNeeded, SkillNode parent, String name) {
+
+	public Integer getSkill() {
+		return skillId;
+	}
+
+	public void setSkill(Integer skillId) {
+		this.skillId = skillId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Boolean getEssential() {
+		return essential;
+	}
+
+	public void setEssential(Boolean essential) {
+		this.essential = essential;
+	}
+
+	public Boolean getSpecific() {
+		return specific;
+	}
+
+	public void setSpecific(Boolean specific) {
+		this.specific = specific;
+	}
+
+	public Integer getPerksAvailable() {
+		return perksAvailable;
+	}
+
+	public void setPerksAvailable(Integer perksAvailable) {
+		this.perksAvailable = perksAvailable;
+	}
+
+	public Integer getSkillLevelNeeded() {
+		return skillLevelNeeded;
+	}
+
+	public void setSkillLevelNeeded(Integer skillLevelNeeded) {
+		this.skillLevelNeeded = skillLevelNeeded;
+	}
+
+	public Boolean getActivated() {
+		return activated;
+	}
+
+	public void setActivated(Boolean activated) {
+		this.activated = activated;
+	}
+
+	public SkillNodeDTO(Integer id, Integer skillId, String description, Boolean essential, Boolean specific,
+			Integer perksAvailable, Integer skillLevelNeeded, Boolean activated) {
 		super();
-		this.skill = skill;
-		this.name = name;
+		this.id = id;
+		this.skillId = skillId;
 		this.description = description;
 		this.essential = essential;
 		this.specific = specific;
 		this.perksAvailable = perksAvailable;
 		this.skillLevelNeeded = skillLevelNeeded;
-		this.activated = Boolean.FALSE;
+		this.activated = activated;
 	}
-	
-	public SkillNode() {
-		this.activated = Boolean.FALSE;
+
+	public SkillNodeDTO() {
 	}
-	
+
 }

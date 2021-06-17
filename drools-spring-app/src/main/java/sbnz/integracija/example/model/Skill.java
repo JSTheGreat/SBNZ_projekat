@@ -2,6 +2,7 @@ package sbnz.integracija.example.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -30,8 +31,8 @@ public class Skill {
 	@Column(nullable = false)
 	private Integer level;
 	
-	@OneToOne
-	private SkillNode root;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "skill")
+	private Set<SkillNode> nodes;
 	
 	@Column(nullable = false)
 	private SkillType type;
@@ -60,17 +61,20 @@ public class Skill {
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
-	public SkillNode getRoot() {
-		return root;
+	public Set<SkillNode> getRoot() {
+		return nodes;
 	}
-	public void setRoot(SkillNode root) {
-		this.root = root;
+	public void setRoot(Set<SkillNode> nodes) {
+		this.nodes = nodes;
 	}
 	public SkillType getType() {
 		return type;
 	}
 	public void setType(SkillType type) {
 		this.type = type;
+	}
+	public void setType(String type) {
+		this.type = SkillType.valueOf(type);
 	}
 	public Integer getPriority() {
 		return priority;
@@ -81,8 +85,8 @@ public class Skill {
 	public Orientation getOrientation() {
 		return orientation;
 	}
-	public void setOrientation(Orientation orientation) {
-		this.orientation = orientation;
+	public void setOrientation(String orientation) {
+		this.orientation = Orientation.valueOf(orientation);
 	}
 	public Integer getId() {
 		return id;
@@ -91,10 +95,10 @@ public class Skill {
 		this.id = id;
 	}
 	
-	public Skill(String name, SkillNode root, SkillType type, Integer priority, Orientation orientation) {
+	public Skill(String name, Set<SkillNode> nodes, SkillType type, Integer priority, Orientation orientation) {
 		super();
 		this.name = name;
-		this.root = root;
+		this.nodes = nodes;
 		this.type = type;
 		this.priority = priority;
 		this.orientation = orientation;
