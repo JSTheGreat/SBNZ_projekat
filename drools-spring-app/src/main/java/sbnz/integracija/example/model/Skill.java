@@ -94,6 +94,24 @@ public class Skill {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	public Set<SkillNode> getNodes() {
+		return nodes;
+	}
+	public void setNodes(Set<SkillNode> nodes) {
+		this.nodes = nodes;
+	}
+	public void setSubsets(Map<String, Integer> subsets) {
+		this.subsets = subsets;
+	}
+	public void setOrientation(Orientation orientation) {
+		this.orientation = orientation;
+	}
 	
 	public Skill(String name, Set<SkillNode> nodes, SkillType type, Integer priority, Orientation orientation) {
 		super();

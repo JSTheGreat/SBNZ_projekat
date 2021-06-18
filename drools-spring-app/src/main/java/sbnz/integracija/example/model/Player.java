@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import sbnz.integracija.example.enums.Orientation;
+
 @Entity
 public class Player {
 	
@@ -16,7 +18,7 @@ public class Player {
 	private String race;
 	
 	@Column(nullable = false)
-	private String role;
+	private Orientation role;
 	
 	@Column(nullable = false)
 	private Double level;
@@ -30,10 +32,10 @@ public class Player {
 	public void setRace(String race) {
 		this.race = race;
 	}
-	public String getRole() {
+	public Orientation getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(Orientation role) {
 		this.role = role;
 	}
 	public Double getLevel() {
@@ -55,7 +57,7 @@ public class Player {
 		this.id = id;
 	}
 	
-	public Player(String race, String role) {
+	public Player(String race, Orientation role) {
 		super();
 		this.race = race;
 		this.role = role;
@@ -64,6 +66,34 @@ public class Player {
 	}
 	
 	public Player() {
+	}
+	
+	public void setRole(String role2) {
+		if (role2.equals("WARRIOR"))
+			this.role = Orientation.WARRIOR;
+		else if (role2.equals("MAGE"))
+			this.role = Orientation.MAGE;
+		else
+			this.role = Orientation.THIEF;
+		
+	}
+	
+	public void setHeadStart(String skillName, Integer level) {
+		for (Skill skill: this.skills) {
+			if (skill.getName().equals(skillName)) {
+				skill.setLevel(level);
+				break;
+			}
+		}
+	}
+	
+	public Integer skillLevel(String skillName) {
+		for (Skill skill: this.skills) {
+			if (skill.getName().equals(skillName)) {
+				return skill.getLevel();
+			}
+		}
+		return null;
 	}
 
 }

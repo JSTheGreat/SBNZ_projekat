@@ -13,9 +13,7 @@ public class SkillDTO {
 	private String name;
 	
 	private Integer level;
-	
-	private Integer rootId;
-	
+		
 	private String type;
 	
 	private Integer priority;
@@ -62,14 +60,6 @@ public class SkillDTO {
 		this.level = level;
 	}
 
-	public Integer getRootId() {
-		return rootId;
-	}
-
-	public void setRootId(Integer rootId) {
-		this.rootId = rootId;
-	}
-
 	public String getType() {
 		return type;
 	}
@@ -95,14 +85,13 @@ public class SkillDTO {
 	}
 
 	public SkillDTO(Integer id, Integer playerId, Map<String, Integer> subsets, String name, Integer level,
-			Integer rootId, String type, Integer priority, String orientation) {
+			String type, Integer priority, String orientation) {
 		super();
 		this.id = id;
 		this.playerId = playerId;
 		this.subsets = subsets;
 		this.name = name;
 		this.level = level;
-		this.rootId = rootId;
 		this.type = type;
 		this.priority = priority;
 		this.orientation = orientation;

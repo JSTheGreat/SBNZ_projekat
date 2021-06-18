@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sbnz.integracija.example.repository.Item;
+import sbnz.integracija.example.model.Player;
 
 @Service
 public class KieService {
@@ -21,12 +21,13 @@ public class KieService {
 		log.info("Initialising a new example session.");
 		this.kieContainer = kieContainer;
 	}
-
-	public Item getClassifiedItem(Item i) {
+	
+	public Player setPlayer(Player player) {
 		KieSession kieSession = kieContainer.newKieSession();
-		kieSession.insert(i);
+		kieSession.insert(player);
 		kieSession.fireAllRules();
 		kieSession.dispose();
-		return i;
+		return player;
 	}
+	
 }

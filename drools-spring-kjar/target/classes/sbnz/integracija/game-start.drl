@@ -1,0 +1,17 @@
+package sbnz.integracija;
+
+import sbnz.integracija.example.model.Player
+
+rule "New player is Nord"
+	when 
+		$p: Player(race == "Nord")
+	then
+		System.out.println("Pronadjen je Nord u drl-u");
+		$p.setHeadStart("Two-handed", 25);
+		$p.setHeadStart("Smithing", 20);
+		$p.setHeadStart("Block", 20);
+		$p.setHeadStart("One-handed", 20);
+		$p.setHeadStart("Light Armor", 20);
+		$p.setHeadStart("Speech", 20);
+		update($p);
+end
