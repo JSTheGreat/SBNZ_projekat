@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import sbnz.integracija.example.model.Skill;
+import sbnz.integracija.example.service.KieService;
 import sbnz.integracija.example.service.SkillService;
 
 @RestController
@@ -19,15 +21,26 @@ public class SkillController {
 		
 	@Autowired
 	private SkillService service;
+	
+	@Autowired
+	private KieService kieService;
 		
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> getAllSkills(){
-		System.out.println("Stigne do skill back-a");
+		System.out.println("");
 		List<Skill> skills = service.findAll();
-		System.out.println("Skill number: " + skills.size());
 		for (Skill skill: skills) {
-			System.out.println("Skill: "+skill.getName()+", level: "+skill.getLevel());
+			System.out.println(skill);
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/{id}/{subset}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> increaseSkill(@PathVariable Integer id, @PathVariable String subset){
+		Skill increased = service.findOne(id);
+		increased.incSubset(subset);
+		increased = kieService.incSkill(increased);
+		increased = service.save(increased);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 

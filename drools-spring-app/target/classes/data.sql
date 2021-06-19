@@ -1,25 +1,25 @@
-insert into player (id, race, role, level) values
-	(1, 'Nord', 0, 1.0);
+insert into player (id, level) values
+	(1, 1.0);
 
 insert into skill (id, name, level, type, priority, orientation, player_id) values
-	(1, 'Illusion', 15.0, 2, 1, 2, 1),
-	(2, 'Conjuration', 15.0, 0, 1, 2, 1),
-	(3, 'Destruction', 15.0, 0, 1, 2, 1),
-	(4, 'Restoration', 15.0, 1, 1, 2, 1),
-	(5, 'Alteration', 15.0, 2, 1, 2, 1),
-	(6, 'Enchanting', 15.0, 2, 1, 2, 1),
-	(7, 'Smithing', 15.0, 2, 1, 0, 1),
-	(8, 'Heavy Armor', 15.0, 1, 1, 0, 1),
-	(9, 'Block', 15.0, 1, 1, 0, 1),
-	(10, 'One-handed', 15.0, 0, 1, 0, 1),
-	(11, 'Two-handed', 15.0, 0, 1, 0, 1),
-	(12, 'Archery', 15.0, 0, 1, 0, 1),
-	(13, 'Light Armor', 15.0, 1, 1, 1, 1),
-	(14, 'Sneak', 15.0, 2, 1, 1, 1),
-	(15, 'Lockpicking', 15.0, 2, 1, 1, 1),
-	(16, 'Pickpocket', 15.0, 2, 1, 1, 1),
-	(17, 'Speech', 15.0, 2, 1, 1, 1),
-	(18, 'Alchemy', 15.0, 2, 1, 1, 1);
+	(1, 'Illusion', 15.0, 2, 9, 2, 1),
+	(2, 'Conjuration', 15.0, 0, 5, 2, 1),
+	(3, 'Destruction', 15.0, 0, 5, 2, 1),
+	(4, 'Restoration', 15.0, 1, 4, 2, 1),
+	(5, 'Alteration', 15.0, 2, 9, 2, 1),
+	(6, 'Enchanting', 15.0, 2, 9, 2, 1),
+	(7, 'Smithing', 15.0, 2, 9, 0, 1),
+	(8, 'Heavy Armor', 15.0, 1, 4, 0, 1),
+	(9, 'Block', 15.0, 1, 4, 0, 1),
+	(10, 'One-handed', 15.0, 0, 5, 0, 1),
+	(11, 'Two-handed', 15.0, 0, 5, 0, 1),
+	(12, 'Archery', 15.0, 0, 5, 0, 1),
+	(13, 'Light Armor', 15.0, 1, 4, 1, 1),
+	(14, 'Sneak', 15.0, 2, 9, 1, 1),
+	(15, 'Lockpicking', 15.0, 2, 9, 1, 1),
+	(16, 'Pickpocket', 15.0, 2, 9, 1, 1),
+	(17, 'Speech', 15.0, 2, 9, 1, 1),
+	(18, 'Alchemy', 15.0, 2, 9, 1, 1);
 	
 insert into subsets (skill_id, subset_name, value) values
 	(11, 'Battleaxe', 0),
@@ -27,7 +27,7 @@ insert into subsets (skill_id, subset_name, value) values
 	(11, 'Warhammer', 0),
 	(10, 'Sword', 0),
 	(10, 'Mace', 0),
-	(10, 'War Axe', 0),
+	(10, 'Axe', 0),
 	(3, 'Frost', 0),
 	(3, 'Fire', 0),
 	(3, 'Shock', 0);

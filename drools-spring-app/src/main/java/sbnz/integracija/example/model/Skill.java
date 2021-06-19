@@ -128,5 +128,14 @@ public class Skill {
 		this.level = 15;
 		this.subsets = new HashMap<String, Integer>();
 	}
+	
+	@Override
+	public String toString() {
+		return "Skill [id=" + id + ", subsets=" + subsets + ", name=" + name + ", level=" + level + ", type=" + type
+				+ ", priority=" + priority + ", orientation=" + orientation + "]";
+	}
+	public void incSubset(String subset) {
+		this.subsets.put(subset, this.subsets.get(subset)+1);		
+	}
 			
 }

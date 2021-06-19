@@ -26,6 +26,10 @@ public class SkillService {
 		return repository.findById(id).orElse(null);
 	}
 	
+	public Skill findOne(String name) {
+		return repository.findOneByName(name);
+	}
+	
 	public void remove(Integer id) {
 		repository.deleteById(id);
 	}

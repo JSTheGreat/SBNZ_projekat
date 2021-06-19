@@ -28,16 +28,10 @@ public class PlayerController {
 	
 	@RequestMapping(value="/{race}/{role}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> getPlayer(@PathVariable String race, @PathVariable String role){
-		System.out.println("Stigne do player back-a");
 		Player player = service.findOne(1);
-		if (player != null)
-			System.out.println("Player != null");
 		player.setRace(race);
 		player.setRole(role);
-		System.out.println("Player attributes set");
 		player = kieService.setPlayer(player);
-		System.out.println("one-handed nord: " + player.skillLevel("One-handed"));
-		System.out.println("haevy armor nord: " + player.skillLevel("Heavy Armor"));
 		player = service.save(player);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

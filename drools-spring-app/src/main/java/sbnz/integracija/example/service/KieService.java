@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sbnz.integracija.example.model.Player;
+import sbnz.integracija.example.model.Skill;
 
 @Service
 public class KieService {
@@ -28,6 +29,14 @@ public class KieService {
 		kieSession.fireAllRules();
 		kieSession.dispose();
 		return player;
+	}
+	
+	public Skill incSkill(Skill skill) {
+		KieSession kieSession = kieContainer.newKieSession();
+		kieSession.insert(skill);
+		kieSession.fireAllRules();
+		kieSession.dispose();
+		return skill;
 	}
 	
 }

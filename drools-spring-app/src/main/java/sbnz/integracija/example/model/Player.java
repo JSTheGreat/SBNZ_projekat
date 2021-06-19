@@ -14,10 +14,10 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
-	@Column(nullable = false)
+	@Column
 	private String race;
 	
-	@Column(nullable = false)
+	@Column
 	private Orientation role;
 	
 	@Column(nullable = false)
@@ -94,6 +94,15 @@ public class Player {
 			}
 		}
 		return null;
+	}
+	
+	public void setPriority(String skillName, Integer priority) {
+		for (Skill skill: this.skills) {
+			if (skill.getName().equals(skillName)) {
+				skill.setPriority(priority);
+				break;
+			}
+		}
 	}
 
 }

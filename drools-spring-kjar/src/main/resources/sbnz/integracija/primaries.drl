@@ -1,0 +1,18 @@
+package sbnz.integracija;
+
+import sbnz.integracija.example.model.Skill
+
+rule "Increase skill point"
+	when
+		$s: Skill()
+	then
+		$s.setLevel($s.getLevel()+1);
+		update($s);
+end
+
+rule "Increase skill subset"
+	when
+		$s: Skill(level == 20)
+	then
+		System.out.println("Fuck, try to figure it out");
+end

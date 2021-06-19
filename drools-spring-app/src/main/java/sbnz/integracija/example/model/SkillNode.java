@@ -113,4 +113,11 @@ public class SkillNode{
 		this.activated = Boolean.FALSE;
 	}
 	
+	@Override
+	public String toString() {
+		return "SkillNode [id=" + id + ", name=" + name + ", description=" + description + ", essential=" + essential
+				+ ", specific=" + specific + ", perksAvailable=" + perksAvailable + ", skillLevelNeeded="
+				+ skillLevelNeeded + ", position=" + position + ", activated=" + activated + "]";
+	}
+
 }
