@@ -26,8 +26,15 @@ public class PlayerController {
 		this.kieService = kieService;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<Void> getPlayer(){
+		Player player = service.findOne(1);
+		System.out.println(player);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/{race}/{role}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> getPlayer(@PathVariable String race, @PathVariable String role){
+	public ResponseEntity<Void> startPlayer(@PathVariable String race, @PathVariable String role){
 		Player player = service.findOne(1);
 		player.setRace(race);
 		player.setRole(role);

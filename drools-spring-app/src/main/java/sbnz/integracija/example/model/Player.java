@@ -104,5 +104,10 @@ public class Player {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", race=" + race + ", role=" + role + ", level=" + level + "]";
+	}
 
 }

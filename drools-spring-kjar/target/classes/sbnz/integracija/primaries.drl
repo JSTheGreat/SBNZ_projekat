@@ -1,6 +1,10 @@
 package sbnz.integracija;
 
 import sbnz.integracija.example.model.Skill
+import sbnz.integracija.example.model.Player
+import sbnz.integracija.example.service.SkillService
+
+global Skill sth;
 
 rule "Increase skill point"
 	when
@@ -8,11 +12,13 @@ rule "Increase skill point"
 	then
 		$s.setLevel($s.getLevel()+1);
 		update($s);
+		insert($s.getPlayer());
 end
 
-rule "Increase skill subset"
+rule "Increase player level"
 	when
-		$s: Skill(level == 20)
+		$p: Player()
 	then
-		System.out.println("Fuck, try to figure it out");
+		$p.setLevel($p.getLevel()+0.1);
+		update($p);
 end

@@ -38,7 +38,8 @@ public class SkillController {
 	@RequestMapping(value="/{id}/{subset}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> increaseSkill(@PathVariable Integer id, @PathVariable String subset){
 		Skill increased = service.findOne(id);
-		increased.incSubset(subset);
+		if (increased.getSubsets().size() != 0)
+			increased.incSubset(subset);
 		increased = kieService.incSkill(increased);
 		increased = service.save(increased);
 		return new ResponseEntity<>(HttpStatus.OK);
