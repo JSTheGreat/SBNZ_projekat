@@ -1,5 +1,6 @@
 package sbnz.integracija.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sbnz.integracija.example.dto.SkillDTO;
 import sbnz.integracija.example.model.Skill;
 import sbnz.integracija.example.service.KieService;
 import sbnz.integracija.example.service.SkillService;
@@ -26,13 +28,15 @@ public class SkillController {
 	private KieService kieService;
 		
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> getAllSkills(){
+	public ResponseEntity<List<SkillDTO>> getAllSkills(){
 		System.out.println("");
 		List<Skill> skills = service.findAll();
+		List<SkillDTO> ret = new ArrayList<>();
 		for (Skill skill: skills) {
 			System.out.println(skill);
+			ret.add(new SkillDTO(skill));
 		}
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(ret, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/{id}/{subset}", method = RequestMethod.PUT)

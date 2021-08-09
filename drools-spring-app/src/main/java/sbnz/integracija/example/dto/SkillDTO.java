@@ -2,6 +2,8 @@ package sbnz.integracija.example.dto;
 
 import java.util.Map;
 
+import sbnz.integracija.example.model.Skill;
+
 public class SkillDTO {
 	
     private Integer id;
@@ -95,6 +97,17 @@ public class SkillDTO {
 		this.type = type;
 		this.priority = priority;
 		this.orientation = orientation;
+	}
+	
+	public SkillDTO(Skill skill) {
+		this.id = skill.getId();
+		this.level = skill.getLevel();
+		this.name = skill.getName();
+		this.orientation = skill.getOrientation().name();
+		this.playerId = skill.getPlayer().getId();
+		this.priority = skill.getPriority();
+		this.subsets = skill.getSubsets();
+		this.type = skill.getType().name();
 	}
 
 	public SkillDTO() {

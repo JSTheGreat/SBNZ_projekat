@@ -1,5 +1,7 @@
 package sbnz.integracija.example.dto;
 
+import sbnz.integracija.example.model.Player;
+
 public class PlayerDTO {
 	
 	private Integer id;
@@ -51,6 +53,13 @@ public class PlayerDTO {
 	}
 
 	public PlayerDTO() {
+	}
+
+	public PlayerDTO(Player player) {
+		this.id = player.getId();
+		this.level = player.getLevel();
+		this.race = player.getRace();
+		this.role = player.getRole().name();
 	}
 	
 }

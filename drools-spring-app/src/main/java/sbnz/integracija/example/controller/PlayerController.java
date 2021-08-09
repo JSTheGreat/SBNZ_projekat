@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sbnz.integracija.example.dto.PlayerDTO;
 import sbnz.integracija.example.model.Player;
 import sbnz.integracija.example.service.KieService;
 import sbnz.integracija.example.service.PlayerService;
@@ -27,10 +28,10 @@ public class PlayerController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Void> getPlayer(){
+	public ResponseEntity<PlayerDTO> getPlayer(){
 		Player player = service.findOne(1);
-		System.out.println(player);
-		return new ResponseEntity<>(HttpStatus.OK);
+		PlayerDTO ret = new PlayerDTO(player);
+		return new ResponseEntity<>(ret, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/{race}/{role}", method = RequestMethod.PUT)
