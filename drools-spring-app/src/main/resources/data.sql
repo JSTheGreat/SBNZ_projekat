@@ -1,5 +1,5 @@
-insert into player (id, level) values
-	(1, 1.0);
+insert into player (id, level, race, role) values
+	(1, 1.0, 'Nord', 0);
 
 insert into skill (id, name, level, type, priority, orientation, player_id) values
 	(1, 'Illusion', 15.0, 2, 9, 2, 1),

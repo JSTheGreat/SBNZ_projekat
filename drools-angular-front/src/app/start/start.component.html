@@ -1,2 +1,28 @@
-<label for="name">Name: </label>
-<input id="name" type="text" [formControl]="name">
+<div class="start-wrapper">
+    <form [formGroup]="startStats" class="startForm">
+
+        <label for="race">RACE: </label>
+        <select id="race" class="form-control" formControlName="race">
+        <option>Nord</option>
+        <option>Altmer</option>
+        <option>Argonian</option>
+        <option>Bosmer</option>
+        <option>Breton</option>
+        <option>Dunmer</option>
+        <option>Imperial</option>
+        <option>Khajiit</option>
+        <option>Orc</option>
+        <option>Redguard</option>
+    </select>
+
+        <label for="role">ROLE: </label>
+        <select id="role" class="form-control" formControlName="role">
+        <option>WARRIOR</option>
+        <option>MAGE</option>
+        <option>THIEF</option>
+    </select>
+
+        <button class="btn btn-primary" (click)="submit()">Submit</button>
+
+    </form>
+</div>
