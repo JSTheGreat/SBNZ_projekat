@@ -14,29 +14,38 @@ import sbnz.integracija.example.model.Skill;
 public class KieService {
 
 	private static Logger log = LoggerFactory.getLogger(KieService.class);
-
-	private final KieContainer kieContainer;
+	
+	private final KieSession kieSession;
 
 	@Autowired
 	public KieService(KieContainer kieContainer) {
 		log.info("Initialising a new example session.");
-		this.kieContainer = kieContainer;
+		this.kieSession = kieContainer.newKieSession();
 	}
 	
 	public Player setPlayer(Player player) {
-		KieSession kieSession = kieContainer.newKieSession();
+		kieSession.setGlobal("player", player);
 		kieSession.insert(player);
 		kieSession.fireAllRules();
-		kieSession.dispose();
 		return player;
 	}
 	
 	public Skill incSkill(Skill skill) {
-		KieSession kieSession = kieContainer.newKieSession();
 		kieSession.insert(skill);
 		kieSession.fireAllRules();
-		kieSession.dispose();
 		return skill;
+	}
+	
+	public Player getPlayer() {
+		Player player = (Player) kieSession.getGlobal("player");
+		return player;
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		kieSession.dispose();
+		System.out.println("Session should be disposed :)");
+		super.finalize();
 	}
 	
 }
