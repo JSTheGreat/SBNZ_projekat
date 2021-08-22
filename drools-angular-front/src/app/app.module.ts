@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AllSkillsComponent } from './all-skills/all-skills.component';
+import {MatListModule} from '@angular/material/list';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartComponent
+    StartComponent,
+    AllSkillsComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule, 
-    NgbModule
+    NgbModule,
+    MatListModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

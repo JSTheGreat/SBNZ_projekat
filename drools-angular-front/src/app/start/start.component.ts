@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PlayerService } from '../service/player.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class StartComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private service: PlayerService
+    private service: PlayerService,
+    private router: Router
     ) { 
     this.startStats = this.fb.group({
       race: ['Nord',Validators.required],
@@ -27,7 +29,7 @@ export class StartComponent implements OnInit {
   submit(){
     const val = this.startStats.value;
     this.service.setStart(val.race, val.role).subscribe(res => {
-      alert("Player stats have been selected!");
+      this.router.navigateByUrl('/all-skills');
     });
   }
 
