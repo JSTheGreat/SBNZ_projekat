@@ -17,4 +17,12 @@ export class SkillService {
   allSkills(): Observable<Skill[]> {
     return this.http.get<Skill[]>(this.port, { headers: this.headers, responseType: 'json' });
   }
+
+  incSkill(id: number): Observable<any>{
+    return this.http.put<void>(this.port + "/" + id, { headers: this.headers, responseType: 'json' });
+  }
+
+  incSkillWSubset(id: number, subset: string): Observable<any>{
+    return this.http.put<void>(this.port + "/" + id + "/" + subset, { headers: this.headers, responseType: 'json' });
+  }
 }

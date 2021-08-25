@@ -13,6 +13,5 @@ rule "Increase skill point"
 		$s.setLevel($s.getLevel()+1);
 		update($s);
 		player.setLevel(player.getLevel()+0.1);
-		System.out.println("player level: " + player.getLevel());
 		update(player);
 end

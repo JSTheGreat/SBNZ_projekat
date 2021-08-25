@@ -35,17 +35,24 @@ public class SkillController {
 		List<Skill> skills = service.findAll();
 		List<SkillDTO> ret = new ArrayList<>();
 		for (Skill skill: skills) {
-			System.out.println(skill);
+			skill = service.save(skill);
 			ret.add(new SkillDTO(skill));
 		}
 		return new ResponseEntity<>(ret, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/{id}/{subset}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> increaseSkill(@PathVariable Integer id, @PathVariable String subset){
+	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> increaseSkill(@PathVariable Integer id){
 		Skill increased = service.findOne(id);
-		if (increased.getSubsets().size() != 0)
-			increased.incSubset(subset);
+		increased = kieService.incSkill(increased);
+		increased = service.save(increased);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/{id}/{subset}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> increaseSkillWSubset(@PathVariable Integer id, @PathVariable String subset){
+		Skill increased = service.findOne(id);
+		increased.incSubset(subset);
 		increased = kieService.incSkill(increased);
 		increased = service.save(increased);
 		return new ResponseEntity<>(HttpStatus.OK);

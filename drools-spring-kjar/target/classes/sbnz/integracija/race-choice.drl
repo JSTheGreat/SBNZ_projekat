@@ -2,19 +2,16 @@ package sbnz.integracija;
 
 import sbnz.integracija.example.model.Player
 
-global String chosen;
-
 rule "New player is Nord"
 	when 
 		$p: Player(race == "Nord")
 	then
-		chosen = "Nord";
-		$p.setHeadStart("Two-handed", 25);
-		$p.setPriority("Two-handed", 1);
+		$p.setHeadStart("Twohanded", 25);
+		$p.setPriority("Twohanded", 1);
 		$p.setHeadStart("Smithing", 20);
 		$p.setHeadStart("Block", 20);
-		$p.setHeadStart("One-handed", 20);
-		$p.setHeadStart("Light Armor", 20);
+		$p.setHeadStart("Onehanded", 20);
+		$p.setHeadStart("Light_Armor", 20);
 		$p.setHeadStart("Speech", 20);
 		update($p);
 end
@@ -23,7 +20,6 @@ rule "New player is Altmer"
 	when 
 		$p: Player(race == "Altmer")
 	then
-		chosen = "Altmer";
 		$p.setHeadStart("Illusion", 25);
 		$p.setPriority("Illusion", 1);
 		$p.setHeadStart("Conjuration", 20);
@@ -38,13 +34,12 @@ rule "New player is Argonian"
 	when 
 		$p: Player(race == "Argonian")
 	then
-		chosen = "Argonian";
 		$p.setHeadStart("Lockpicking", 25);
 		$p.setPriority("Lockpicking", 1);
 		$p.setHeadStart("Sneak", 20);
 		$p.setHeadStart("Restoration", 20);
 		$p.setHeadStart("Alteration", 20);
-		$p.setHeadStart("Light Armor", 20);
+		$p.setHeadStart("Light_Armor", 20);
 		$p.setHeadStart("Pickpocket", 20);
 		update($p);
 end
@@ -58,10 +53,9 @@ rule "New player is Bosmer"
 		$p.setHeadStart("Sneak", 20);
 		$p.setHeadStart("Pickpocket", 20);
 		$p.setHeadStart("Alchemy", 20);
-		$p.setHeadStart("Light Armor", 20);
+		$p.setHeadStart("Light_Armor", 20);
 		$p.setHeadStart("Lockpicking", 20);
 		update($p);
-		chosen = "Bosmer";
 end
 
 rule "New player is Breton"
@@ -76,7 +70,6 @@ rule "New player is Breton"
 		$p.setHeadStart("Alteration", 20);
 		$p.setHeadStart("Speech", 20);
 		update($p);
-		chosen = "Breton";
 end
 
 rule "New player is Dunmer"
@@ -88,10 +81,9 @@ rule "New player is Dunmer"
 		$p.setHeadStart("Alchemy", 20);
 		$p.setHeadStart("Illusion", 20);
 		$p.setHeadStart("Alteration", 20);
-		$p.setHeadStart("Light Armor", 20);
+		$p.setHeadStart("Light_Armor", 20);
 		$p.setHeadStart("Sneak", 20);
 		update($p);
-		chosen = "Dunmer";
 end
 
 rule "New player is Imperial"
@@ -102,11 +94,10 @@ rule "New player is Imperial"
 		$p.setPriority("Restoration", 1);
 		$p.setHeadStart("Enchanting", 20);
 		$p.setHeadStart("Block", 20);
-		$p.setHeadStart("One-handed", 20);
-		$p.setHeadStart("Heavy Armor", 20);
+		$p.setHeadStart("Onehanded", 20);
+		$p.setHeadStart("Heavy_Armor", 20);
 		$p.setHeadStart("Destruction", 20);
 		update($p);
-		chosen = "Imperial";
 end
 
 rule "New player is Khajiit"
@@ -121,35 +112,32 @@ rule "New player is Khajiit"
 		$p.setHeadStart("Alchemy", 20);
 		$p.setHeadStart("Speech", 20);
 		update($p);
-		chosen = "Khajiit";
 end
 
 rule "New player is Orc"
 	when 
 		$p: Player(race == "Orc")
 	then
-		$p.setHeadStart("Heavy Armor", 25);
-		$p.setPriority("Heavy Armor", 1);
+		$p.setHeadStart("Heavy_Armor", 25);
+		$p.setPriority("Heavy_Armor", 1);
 		$p.setHeadStart("Block", 20);
 		$p.setHeadStart("Enchanting", 20);
 		$p.setHeadStart("Smithing", 20);
-		$p.setHeadStart("One-handed", 20);
-		$p.setHeadStart("Two-handed", 20);
+		$p.setHeadStart("Onehanded", 20);
+		$p.setHeadStart("Twohanded", 20);
 		update($p);
-		chosen = "Orc";
 end
 
 rule "New player is Redguard"
 	when 
 		$p: Player(race == "Redguard")
 	then
-		$p.setHeadStart("One-handed", 25);
-		$p.setPriority("One-handed", 1);
+		$p.setHeadStart("Onehanded", 25);
+		$p.setPriority("Onehanded", 1);
 		$p.setHeadStart("Archery", 20);
 		$p.setHeadStart("Block", 20);
 		$p.setHeadStart("Smithing", 20);
 		$p.setHeadStart("Destruction", 20);
 		$p.setHeadStart("Alteration", 20);
 		update($p);
-		chosen = "Redguard";
 end

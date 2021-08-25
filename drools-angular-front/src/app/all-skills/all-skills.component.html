@@ -1,12 +1,14 @@
 <div class="list-group">
-    <a *ngFor="let skill of skills" href="/all-skills" class="list-group-item list-group-item-action flex-column align-items-start">
+    <a *ngFor="let skill of skills" routerLink="/all-skills" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{skill.name}}</h5>
-            <small>player id: {{skill.playerId}}</small>
+            <h5 class="mb-2">{{skill.name}}</h5>
+            <small>Overall level: {{player.level}}</small>
+            <small>{{skill.subsets["Frost"]}}</small>
         </div>
         <p class="mb-1">Orientation: {{skill.orientation}}, Type: {{skill.type}}
         </p>
         <small>Current level: </small>
         <mdb-badge pill="true" primary="true">{{skill.level}}</mdb-badge>
+        <button type="button" (click)="incSkill(skill.id)" class="btn btn-primary">Increase skill</button>
     </a>
 </div>
