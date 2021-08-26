@@ -3,12 +3,14 @@
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-2">{{skill.name}}</h5>
             <small>Overall level: {{player.level}}</small>
-            <small>{{skill.subsets["Frost"]}}</small>
         </div>
         <p class="mb-1">Orientation: {{skill.orientation}}, Type: {{skill.type}}
         </p>
         <small>Current level: </small>
         <mdb-badge pill="true" primary="true">{{skill.level}}</mdb-badge>
-        <button type="button" (click)="incSkill(skill.id)" class="btn btn-primary">Increase skill</button>
+        <button type="button" *ngIf="!hasSubset(skill.id-1)" (click)="incSkill(skill.id)" class="btn btn-primary">Increase skill</button>
+        <div class="btn-group">
+            <button type="button" *ngFor="let sub of getSubsets(skill.id-1)" (click)="incSubset(skill.id, sub)" class="btn btn-primary">Increase {{sub}} <span class="badge badge-light">{{getSubsetLevel(skill.id-1, sub)}}</span></button>
+        </div>
     </a>
 </div>

@@ -31,12 +31,36 @@ export class AllSkillsComponent implements OnInit {
     })
   }
 
+  hasSubset(index: number): boolean {
+    if (Object.keys(this.skills[index].subsets).length == 0)
+      return false;
+    return true;
+  }
+
+  getSubsets(index: number){
+    let ret = [];
+    Object.keys(this.skills[index].subsets).forEach(el => {
+      ret.push(el);
+    });
+    return ret;
+  }
+
+  getSubsetLevel(index:number, name: string){
+    return this.skills[index].subsets[name];
+  }
+
   incSkill(id){
     this.service.incSkill(id).subscribe(res => {
       console.log("Skill should be increased in front");
       this.ngOnInit();
       console.log("all skills should be updated");
     });
+  }
+
+  incSubset(id, subset){
+    this.service.incSkillWSubset(id, subset).subscribe(res => {
+      this.ngOnInit();
+    })
   }
 
 }
