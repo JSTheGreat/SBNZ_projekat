@@ -22,6 +22,10 @@ public class SkillNodeService {
 		return repository.findAll();
 	}
 	
+	public List<SkillNode> findBySkill(Integer skillId){
+		return repository.findBySkillId(skillId);
+	}
+	
 	public SkillNode findOne(Integer id) {
 		return repository.findById(id).orElse(null);
 	}

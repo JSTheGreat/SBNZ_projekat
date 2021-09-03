@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Player } from '../model/player';
 import { Skill } from '../model/skill';
+import { SkillNode } from '../model/skill-node';
 import { PlayerService } from '../service/player.service';
+import { SkillNodeService } from '../service/skill-node.service';
 import { SkillService } from '../service/skill.service';
 
 @Component({
@@ -12,13 +14,18 @@ import { SkillService } from '../service/skill.service';
 })
 export class AllSkillsComponent implements OnInit {
 
+  @ViewChild('content', { static: false }) private content;
+
   skills: Skill[];
   player: Player;
+  nodes: SkillNode[];
+  selected: string;
 
   constructor(
     private service: SkillService,
-    private router: Router,
-    private playerService: PlayerService
+    private nodeService: SkillNodeService,
+    private playerService: PlayerService,
+    private modal: NgbModal
   ) {
   }
 
@@ -53,6 +60,7 @@ export class AllSkillsComponent implements OnInit {
     this.service.incSkill(id).subscribe(res => {
       console.log("Skill should be increased in front");
       this.ngOnInit();
+      this.modal.dismissAll();
       console.log("all skills should be updated");
     });
   }
@@ -60,7 +68,16 @@ export class AllSkillsComponent implements OnInit {
   incSubset(id, subset){
     this.service.incSkillWSubset(id, subset).subscribe(res => {
       this.ngOnInit();
-    })
+      this.modal.dismissAll();
+    });
+  }
+
+  openNodes(skillId, skillName){
+    this.selected = skillName;
+    this.nodeService.getNodes(skillId).subscribe(res => {
+      this.nodes = res;
+      this.modal.open(this.content, { scrollable: true, size: 'xl'});
+    });
   }
 
 }

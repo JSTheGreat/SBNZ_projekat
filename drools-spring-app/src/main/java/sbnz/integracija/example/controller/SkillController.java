@@ -31,7 +31,6 @@ public class SkillController {
 		
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SkillDTO>> getAllSkills(){
-		System.out.println("");
 		List<Skill> skills = service.findAll();
 		List<SkillDTO> ret = new ArrayList<>();
 		for (Skill skill: skills) {

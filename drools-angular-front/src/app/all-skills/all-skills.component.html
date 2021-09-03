@@ -1,8 +1,8 @@
 <div class="list-group">
-    <a *ngFor="let skill of skills" routerLink="/all-skills" class="list-group-item list-group-item-action flex-column align-items-start">
+    <a *ngFor="let skill of skills" routerLink="/all-skills" class="list-group-item list-group-item-action flex-column align-items-start" (click)="openNodes(skill.id, skill.name)">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-2">{{skill.name}}</h5>
-            <small>Overall level: {{player.level}}</small>
+            <small>Overall player level: {{player.level}}</small>
         </div>
         <p class="mb-1">Orientation: {{skill.orientation}}, Type: {{skill.type}}
         </p>
@@ -14,3 +14,28 @@
         </div>
     </a>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{selected}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        <div class="treeview" data-open-on-click="true">
+            <ul *ngFor="let node of nodes">
+                <li>{{node.name}}</li>
+                <ul class="show">
+                    <li>{{node.description}}</li>
+                    <li>Skill level needed: {{node.skillLevelNeeded}}</li>
+                    <li>Activated: {{node.activated}}</li>
+                    <li>Available: {{node.perksAvailable}}</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

@@ -9,7 +9,7 @@ public class SkillNode{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	private Skill skill;
 	
 	@Column(nullable = false)
@@ -34,7 +34,7 @@ public class SkillNode{
 	private Integer position;
 	
 	@Column(nullable = false)
-	private Boolean activated;
+	private Integer activated;
 	
 	public Skill getSkill() {
 		return skill;
@@ -84,10 +84,10 @@ public class SkillNode{
 	public void setPosition(Integer position) {
 		this.position = position;
 	}
-	public Boolean getActivated() {
+	public Integer getActivated() {
 		return activated;
 	}
-	public void setActivated(Boolean activated) {
+	public void setActivated(Integer activated) {
 		this.activated = activated;
 	}
 	public Integer getId() {
@@ -106,11 +106,11 @@ public class SkillNode{
 		this.specific = specific;
 		this.perksAvailable = perksAvailable;
 		this.skillLevelNeeded = skillLevelNeeded;
-		this.activated = Boolean.FALSE;
+		this.activated = 0;
 	}
 	
 	public SkillNode() {
-		this.activated = Boolean.FALSE;
+		this.activated = 0;
 	}
 	
 	@Override

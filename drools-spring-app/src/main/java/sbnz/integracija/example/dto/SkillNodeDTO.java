@@ -1,10 +1,12 @@
 package sbnz.integracija.example.dto;
 
+import sbnz.integracija.example.model.SkillNode;
+
 public class SkillNodeDTO {
 	
     private Integer id;
 	
-	private Integer skillId;
+	private String skillName;
 	
 	private String name;
 	
@@ -18,7 +20,7 @@ public class SkillNodeDTO {
 	
 	private Integer skillLevelNeeded;
 	
-	private Boolean activated;
+	private Integer activated;
 
 	public Integer getId() {
 		return id;
@@ -28,12 +30,12 @@ public class SkillNodeDTO {
 		this.id = id;
 	}
 	
-	public Integer getSkillId() {
-		return skillId;
+	public String getSkillId() {
+		return skillName;
 	}
 
-	public void setSkillId(Integer skillId) {
-		this.skillId = skillId;
+	public void setSkillId(String skillName) {
+		this.skillName = skillName;
 	}
 
 	public String getName() {
@@ -84,19 +86,19 @@ public class SkillNodeDTO {
 		this.skillLevelNeeded = skillLevelNeeded;
 	}
 
-	public Boolean getActivated() {
+	public Integer getActivated() {
 		return activated;
 	}
 
-	public void setActivated(Boolean activated) {
+	public void setActivated(Integer activated) {
 		this.activated = activated;
 	}
 
-	public SkillNodeDTO(Integer id, Integer skillId, String name, String description, Boolean essential, 
-			Boolean specific, Integer perksAvailable, Integer skillLevelNeeded, Boolean activated) {
+	public SkillNodeDTO(Integer id, String skillName, String name, String description, Boolean essential, 
+			Boolean specific, Integer perksAvailable, Integer skillLevelNeeded, Integer activated) {
 		super();
 		this.id = id;
-		this.skillId = skillId;
+		this.skillName = skillName;
 		this.name = name;
 		this.description = description;
 		this.essential = essential;
@@ -107,6 +109,18 @@ public class SkillNodeDTO {
 	}
 
 	public SkillNodeDTO() {
+	}
+
+	public SkillNodeDTO(SkillNode node) {
+		this.id = node.getId();
+		this.activated = node.getActivated();
+		this.description = node.getDescription();
+		this.essential = node.getEssential();
+		this.name = node.getName();
+		this.perksAvailable = node.getPerksAvailable();
+		this.skillName = node.getSkill().getName();
+		this.skillLevelNeeded = node.getSkillLevelNeeded();
+		this.specific = node.getSpecific();
 	}
 
 }
