@@ -39,12 +39,7 @@ public class LevelingGuide {
 		kScanner.start(10_000);
 		return kContainer;
 	}
-	
-	@Override
-	protected void finalize() throws Throwable {
-		System.gc();
-		super.finalize();
-	}
+
 	/*
 	 * KieServices ks = KieServices.Factory.get(); KieContainer kContainer =
 	 * ks.newKieContainer(ks.newReleaseId("drools-spring-v2",

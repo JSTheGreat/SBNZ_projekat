@@ -23,8 +23,7 @@ public class KieService {
 		this.kieSession = kieContainer.newKieSession();
 	}
 	
-	public Player setPlayer(Player player) {
-		kieSession.setGlobal("newLevel", 2);
+	public Player setPlayer(Player player){
 		kieSession.insert(player);
 		kieSession.fireAllRules();
 		return player;
@@ -44,8 +43,6 @@ public class KieService {
 	@Override
 	protected void finalize() throws Throwable {
 		kieSession.dispose();
-		System.out.println("Session should be disposed :)");
-		super.finalize();
 	}
 	
 }

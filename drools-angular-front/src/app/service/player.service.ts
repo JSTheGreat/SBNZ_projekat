@@ -22,4 +22,8 @@ export class PlayerService {
     return this.http.get<Player>(this.port, { headers: this.headers, responseType: 'json' });
   }
 
+  restartPlayer(): Observable<any> {
+    return this.http.put<void>(this.port, { headers: this.headers, responseType: 'json' });
+  }
+
 }

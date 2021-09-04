@@ -45,5 +45,11 @@ public class PlayerController {
 		player = service.save(player);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Void> changePlayer(){
+		System.gc();
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }
