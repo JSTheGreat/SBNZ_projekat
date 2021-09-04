@@ -24,7 +24,7 @@ public class KieService {
 	}
 	
 	public Player setPlayer(Player player) {
-		kieSession.setGlobal("player", player);
+		kieSession.setGlobal("newLevel", 2);
 		kieSession.insert(player);
 		kieSession.fireAllRules();
 		return player;

@@ -31,7 +31,7 @@ public class PlayerController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<PlayerDTO> getPlayer(){
-		Player player = kieService.getPlayer();
+		Player player = service.findOne(1);
 		PlayerDTO ret = new PlayerDTO(player);
 		return new ResponseEntity<>(ret, HttpStatus.OK);
 	}

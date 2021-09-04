@@ -21,6 +21,8 @@ public class SkillNodeDTO {
 	private Integer skillLevelNeeded;
 	
 	private Integer activated;
+	
+	private Integer position;
 
 	public Integer getId() {
 		return id;
@@ -94,8 +96,24 @@ public class SkillNodeDTO {
 		this.activated = activated;
 	}
 
+	public String getSkillName() {
+		return skillName;
+	}
+
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
 	public SkillNodeDTO(Integer id, String skillName, String name, String description, Boolean essential, 
-			Boolean specific, Integer perksAvailable, Integer skillLevelNeeded, Integer activated) {
+			Boolean specific, Integer perksAvailable, Integer skillLevelNeeded, Integer activated, Integer position) {
 		super();
 		this.id = id;
 		this.skillName = skillName;
@@ -106,6 +124,7 @@ public class SkillNodeDTO {
 		this.perksAvailable = perksAvailable;
 		this.skillLevelNeeded = skillLevelNeeded;
 		this.activated = activated;
+		this.position = position;
 	}
 
 	public SkillNodeDTO() {
@@ -121,6 +140,7 @@ public class SkillNodeDTO {
 		this.skillName = node.getSkill().getName();
 		this.skillLevelNeeded = node.getSkillLevelNeeded();
 		this.specific = node.getSpecific();
+		this.position = node.getPosition();
 	}
 
 }

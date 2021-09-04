@@ -4,7 +4,7 @@ import sbnz.integracija.example.model.Player
 
 rule "New player is Nord"
 	when 
-		$p: Player(race == "Nord")
+		$p: Player(race == "Nord" && level == 1.0)
 	then
 		$p.setHeadStart("Twohanded", 25);
 		$p.setPriority("Twohanded", 1);
@@ -18,7 +18,7 @@ end
 
 rule "New player is Altmer"
 	when 
-		$p: Player(race == "Altmer")
+		$p: Player(race == "Altmer" && level == 1.0)
 	then
 		$p.setHeadStart("Illusion", 25);
 		$p.setPriority("Illusion", 1);
@@ -32,7 +32,7 @@ end
 
 rule "New player is Argonian"
 	when 
-		$p: Player(race == "Argonian")
+		$p: Player(race == "Argonian" && level == 1.0)
 	then
 		$p.setHeadStart("Lockpicking", 25);
 		$p.setPriority("Lockpicking", 1);
@@ -46,7 +46,7 @@ end
 
 rule "New player is Bosmer"
 	when 
-		$p: Player(race == "Bosmer")
+		$p: Player(race == "Bosmer" && level == 1.0)
 	then
 		$p.setHeadStart("Archery", 25);
 		$p.setPriority("Archery", 1);
@@ -60,7 +60,7 @@ end
 
 rule "New player is Breton"
 	when 
-		$p: Player(race == "Breton")
+		$p: Player(race == "Breton" && level == 1.0)
 	then
 		$p.setHeadStart("Conjuration", 25);
 		$p.setPriority("Conjuration", 1);
@@ -74,7 +74,7 @@ end
 
 rule "New player is Dunmer"
 	when 
-		$p: Player(race == "Dunmer")
+		$p: Player(race == "Dunmer" && level == 1.0)
 	then
 		$p.setHeadStart("Destruction", 25);
 		$p.setPriority("Destruction", 1);
@@ -88,7 +88,7 @@ end
 
 rule "New player is Imperial"
 	when 
-		$p: Player(race == "Imperial")
+		$p: Player(race == "Imperial" && level == 1.0)
 	then
 		$p.setHeadStart("Restoration", 25);
 		$p.setPriority("Restoration", 1);
@@ -102,7 +102,7 @@ end
 
 rule "New player is Khajiit"
 	when 
-		$p: Player(race == "Khajiit")
+		$p: Player(race == "Khajiit" && level == 1.0)
 	then
 		$p.setHeadStart("Sneak", 25);
 		$p.setPriority("Sneak", 1);
@@ -116,7 +116,7 @@ end
 
 rule "New player is Orc"
 	when 
-		$p: Player(race == "Orc")
+		$p: Player(race == "Orc" && level == 1.0)
 	then
 		$p.setHeadStart("Heavy_Armor", 25);
 		$p.setPriority("Heavy_Armor", 1);
@@ -130,7 +130,7 @@ end
 
 rule "New player is Redguard"
 	when 
-		$p: Player(race == "Redguard")
+		$p: Player(race == "Redguard" && level == 1.0)
 	then
 		$p.setHeadStart("Onehanded", 25);
 		$p.setPriority("Onehanded", 1);

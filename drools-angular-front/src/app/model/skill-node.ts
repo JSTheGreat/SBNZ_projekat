@@ -7,5 +7,6 @@ export interface SkillNode{
 	specific: boolean,
 	perksAvailable: number,
 	skillLevelNeeded: number,
-	activated: number
+	activated: number,
+	position: number
 }
