@@ -1,11 +1,13 @@
 package sbnz.integracija.example.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
 
 import sbnz.integracija.example.enums.Orientation;
+import sbnz.integracija.example.enums.SkillType;
 
 @Entity
 public class Player {
@@ -102,6 +104,28 @@ public class Player {
 				skill.setPriority(priority);
 				break;
 			}
+		}
+	}
+	
+	private int getSkillPriority(String skill) {
+		for (Skill s: this.skills) {
+			if (s.getName().equals(skill))
+				return s.getPriority();
+		}
+		return 0;
+	}
+	
+	public void lowerPriorities(List<String> skills, Integer priority) {
+		for (String s: skills) {
+			if (priority != null)
+				this.setPriority(s, this.getSkillPriority(s)+1);
+		}
+	}
+	
+	public void setPriorities(SkillType type, Integer priority) {
+		for (Skill skill: this.skills) {
+			if (skill.getType() == type && skill.getPriority()>priority)
+				this.setPriority(skill.getName(), priority);
 		}
 	}
 	

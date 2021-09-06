@@ -12,7 +12,7 @@
     <a *ngFor="let skill of skills" routerLink="/all-skills" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-2">{{skill.name}}</h5>
-            <small>Overall player level: {{player.level}}</small>
+            <small>Skill priority: {{skill.priority}}</small>
         </div>
         <p class="mb-1">Orientation: {{skill.orientation}}, Type: {{skill.type}}
         </p>

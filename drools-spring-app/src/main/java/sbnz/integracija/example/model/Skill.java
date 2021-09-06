@@ -80,7 +80,8 @@ public class Skill {
 		return priority;
 	}
 	public void setPriority(Integer priority) {
-		this.priority = priority;
+		if (priority != null)
+			this.priority = priority;
 	}
 	public Orientation getOrientation() {
 		return orientation;

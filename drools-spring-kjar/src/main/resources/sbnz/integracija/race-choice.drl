@@ -1,18 +1,27 @@
 package sbnz.integracija;
 
 import sbnz.integracija.example.model.Player
+import sbnz.integracija.example.enums.SkillType
 
 rule "New player is Nord"
 	when 
 		$p: Player(race == "Nord" && level == 1.0)
 	then
 		$p.setHeadStart("Twohanded", 25);
-		$p.setPriority("Twohanded", 1);
+		$p.setPriority("Twohanded", 1);		
 		$p.setHeadStart("Smithing", 20);
+		$p.setPriority("Smithing", 1);
 		$p.setHeadStart("Block", 20);
+		$p.setPriority("Block", 1);
 		$p.setHeadStart("Onehanded", 20);
+		$p.setPriority("Onehanded", 2);
 		$p.setHeadStart("Light_Armor", 20);
+		$p.setPriority("Light_Armor", 1);
 		$p.setHeadStart("Speech", 20);
+		$p.setPriority("Speech", 1);
+		$p.setPriorities(SkillType.ATTACK, 3);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end
 
@@ -23,10 +32,18 @@ rule "New player is Altmer"
 		$p.setHeadStart("Illusion", 25);
 		$p.setPriority("Illusion", 1);
 		$p.setHeadStart("Conjuration", 20);
+		$p.setPriority("Conjuration", 1);
 		$p.setHeadStart("Destruction", 20);
+		$p.setPriority("Destruction", 1);
 		$p.setHeadStart("Restoration", 20);
+		$p.setPriority("Restoration", 1);
 		$p.setHeadStart("Alteration", 20);
+		$p.setPriority("Alteration", 2);
 		$p.setHeadStart("Enchanting", 20);
+		$p.setPriority("Enchanting", 2);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 3);
 		update($p);
 end
 
@@ -37,10 +54,18 @@ rule "New player is Argonian"
 		$p.setHeadStart("Lockpicking", 25);
 		$p.setPriority("Lockpicking", 1);
 		$p.setHeadStart("Sneak", 20);
+		$p.setPriority("Sneak", 2);
 		$p.setHeadStart("Restoration", 20);
+		$p.setPriority("Restoration", 1);
 		$p.setHeadStart("Alteration", 20);
+		$p.setPriority("Alteration", 2);
 		$p.setHeadStart("Light_Armor", 20);
+		$p.setPriority("Light_Armor", 1);
 		$p.setHeadStart("Pickpocket", 20);
+		$p.setPriority("Pickpocket", 2);
+		$p.setPriorities(SkillType.ATTACK, 1);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 3);
 		update($p);
 end
 
@@ -51,10 +76,18 @@ rule "New player is Bosmer"
 		$p.setHeadStart("Archery", 25);
 		$p.setPriority("Archery", 1);
 		$p.setHeadStart("Sneak", 20);
+		$p.setPriority("Sneak", 1);
 		$p.setHeadStart("Pickpocket", 20);
+		$p.setPriority("Pickpocket", 1);
 		$p.setHeadStart("Alchemy", 20);
+		$p.setPriority("Alchemy", 1);
 		$p.setHeadStart("Light_Armor", 20);
+		$p.setPriority("Light_Armor", 1);
 		$p.setHeadStart("Lockpicking", 20);
+		$p.setPriority("Lockpicking", 1);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end
 
@@ -65,10 +98,18 @@ rule "New player is Breton"
 		$p.setHeadStart("Conjuration", 25);
 		$p.setPriority("Conjuration", 1);
 		$p.setHeadStart("Alchemy", 20);
+		$p.setPriority("Alchemy", 1);
 		$p.setHeadStart("Illusion", 20);
+		$p.setPriority("Illusion", 1);
 		$p.setHeadStart("Restoration", 20);
+		$p.setPriority("Restoration", 1);
 		$p.setHeadStart("Alteration", 20);
+		$p.setPriority("Alteration", 1);
 		$p.setHeadStart("Speech", 20);
+		$p.setPriority("Speech", 1);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end
 
@@ -79,10 +120,18 @@ rule "New player is Dunmer"
 		$p.setHeadStart("Destruction", 25);
 		$p.setPriority("Destruction", 1);
 		$p.setHeadStart("Alchemy", 20);
+		$p.setPriority("Alchemy", 1);
 		$p.setHeadStart("Illusion", 20);
+		$p.setPriority("Illusion", 1);
 		$p.setHeadStart("Alteration", 20);
+		$p.setPriority("Alteration", 1);
 		$p.setHeadStart("Light_Armor", 20);
+		$p.setPriority("Light_Armor", 1);
 		$p.setHeadStart("Sneak", 20);
+		$p.setPriority("Sneak", 1);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end
 
@@ -93,10 +142,18 @@ rule "New player is Imperial"
 		$p.setHeadStart("Restoration", 25);
 		$p.setPriority("Restoration", 1);
 		$p.setHeadStart("Enchanting", 20);
+		$p.setPriority("Enchanting", 1);
 		$p.setHeadStart("Block", 20);
+		$p.setPriority("Block", 2);
 		$p.setHeadStart("Onehanded", 20);
+		$p.setPriority("Onehanded", 1);
 		$p.setHeadStart("Heavy_Armor", 20);
+		$p.setPriority("Heavy_Armor", 2);
 		$p.setHeadStart("Destruction", 20);
+		$p.setPriority("Destruction", 1);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 3);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end
 
@@ -107,10 +164,18 @@ rule "New player is Khajiit"
 		$p.setHeadStart("Sneak", 25);
 		$p.setPriority("Sneak", 1);
 		$p.setHeadStart("Archery", 20);
+		$p.setPriority("Archery", 1);
 		$p.setHeadStart("Lockpicking", 20);
+		$p.setPriority("Lockpicking", 2);
 		$p.setHeadStart("Pickpocket", 20);
+		$p.setPriority("Pickpocket", 2);
 		$p.setHeadStart("Alchemy", 20);
+		$p.setPriority("Alchemy", 2);
 		$p.setHeadStart("Speech", 20);
+		$p.setPriority("Speech", 2);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 1);
+		$p.setPriorities(SkillType.ASSIST, 3);
 		update($p);
 end
 
@@ -121,10 +186,18 @@ rule "New player is Orc"
 		$p.setHeadStart("Heavy_Armor", 25);
 		$p.setPriority("Heavy_Armor", 1);
 		$p.setHeadStart("Block", 20);
+		$p.setPriority("Block", 2);
 		$p.setHeadStart("Enchanting", 20);
+		$p.setPriority("Enchanting", 1);
 		$p.setHeadStart("Smithing", 20);
+		$p.setPriority("Smithing", 1);
 		$p.setHeadStart("Onehanded", 20);
+		$p.setPriority("Onehanded", 1);
 		$p.setHeadStart("Twohanded", 20);
+		$p.setPriority("Twohanded", 1);
+		$p.setPriorities(SkillType.ATTACK, 2);
+		$p.setPriorities(SkillType.DEFENSE, 3);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end
 
@@ -135,9 +208,17 @@ rule "New player is Redguard"
 		$p.setHeadStart("Onehanded", 25);
 		$p.setPriority("Onehanded", 1);
 		$p.setHeadStart("Archery", 20);
+		$p.setPriority("Archery", 2);
 		$p.setHeadStart("Block", 20);
+		$p.setPriority("Block", 1);
 		$p.setHeadStart("Smithing", 20);
+		$p.setPriority("Smithing", 1);
 		$p.setHeadStart("Destruction", 20);
+		$p.setPriority("Destruction", 2);
 		$p.setHeadStart("Alteration", 20);
+		$p.setPriority("Alteration", 1);
+		$p.setPriorities(SkillType.ATTACK, 3);
+		$p.setPriorities(SkillType.DEFENSE, 2);
+		$p.setPriorities(SkillType.ASSIST, 2);
 		update($p);
 end

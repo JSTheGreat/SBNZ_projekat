@@ -2,7 +2,8 @@ package sbnz.integracija;
 
 import sbnz.integracija.example.model.Skill
 import sbnz.integracija.example.model.Player
-import sbnz.integracija.example.service.SkillService
+
+import sbnz.integracija.example.enums.SkillType
 
 rule "Increase skill point"
 	when
@@ -14,9 +15,47 @@ rule "Increase skill point"
 		insert($p);
 end
 
+rule "New skill priority with updating old priority"
+	when
+		$s: Skill($list: player.getSkills(), $p: player)
+		accumulate(
+			Skill(
+				(priority <= $s.getPriority() && type == $s.getType()) &&
+				(level < $s.getLevel() || 
+				(level == $s.getLevel() && orientation != $p.getRole() && $p.getRole() == $s.getOrientation))
+				,
+				$newPr: priority,
+				$ch: name
+			) from $list,
+			$min: min($newPr),
+			$changes: collectList($ch)
+		)
+	then
+		$s.setPriority((Integer)$min);
+		update($s);
+		$p.lowerPriorities($changes, (Integer)$min);
+		update($p);
+end
+
+rule "New skill priority without updating old priority"
+	when
+		$s: Skill($list: player.getSkills(), $p: player)
+		accumulate(
+			Skill(
+				level == $s.getLevel() && priority < $s.getPriority() && type == $s.getType()
+				&& orientation == $s.getOrientation(),
+				$newPr: priority
+			) from $list,
+			$min: min($newPr)
+		)
+	then
+		$s.setPriority((Integer)$min);
+		update($s);
+end
+
 rule "New player level reached"
 	when
-		$p: Player((Math.floor(level) > Math.floor(level-0.1)) && level != 1.0)
+		Player((Math.floor(level) > Math.floor(level-0.1)) && level != 1.0, $skills: skills)
 	then
 		System.out.println("New player level reached");
 end
