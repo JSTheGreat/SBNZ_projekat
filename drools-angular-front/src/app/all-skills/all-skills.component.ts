@@ -80,10 +80,4 @@ export class AllSkillsComponent implements OnInit {
     });
   }
 
-  toStart(){
-    this.playerService.restartPlayer().subscribe(res => {
-      this.router.navigateByUrl("/");
-    })
-  }
-
 }

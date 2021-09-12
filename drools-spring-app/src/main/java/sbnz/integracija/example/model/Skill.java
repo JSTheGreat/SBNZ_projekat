@@ -1,6 +1,8 @@
 package sbnz.integracija.example.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -171,6 +173,10 @@ public class Skill {
 		if (!this.hasAvailable())
 			return chainPriority;
 		chainPriority += this.getPriority();
+		if (this.getTotalPerks() != null) {
+			if (this.getTotalPerks() % 3 == 0 && this.getTotalPerks() != 0)
+				chainPriority += 1.0;
+		}
 		if (this.getType() == SkillType.DEFENSE)
 			chainPriority += 0.25;
 		else if (this.getType() == SkillType.ASSIST) 
@@ -178,6 +184,26 @@ public class Skill {
 		if (!this.isPlayersClass() && !this.hasEssential())
 			chainPriority += 3.0;
 		return chainPriority;
+	}
+	
+	@Transactional
+	public Integer getTotalPerks() {
+		int perks = 0;
+		for (SkillNode node: this.nodes) {
+			if (node.getActivated()>0)
+				perks += node.getActivated();
+		}
+		return perks;
+	}
+	
+	public List<SkillNode> getAvailables() {
+		List<SkillNode> ret = new ArrayList<>();
+		int perks = this.getTotalPerks();
+		for (SkillNode node: this.nodes) {
+			if (node.getPosition() <= (perks+1) && node.getPerksAvailable() > 0)
+				ret.add(node);
+		}
+		return ret;
 	}
 			
 }

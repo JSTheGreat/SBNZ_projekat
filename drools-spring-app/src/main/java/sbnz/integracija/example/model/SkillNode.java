@@ -1,5 +1,7 @@
 package sbnz.integracija.example.model;
 
+import java.util.Map;
+
 import javax.persistence.*;
 
 @Entity
@@ -118,6 +120,24 @@ public class SkillNode{
 		return "SkillNode [id=" + id + ", name=" + name + ", description=" + description + ", essential=" + essential
 				+ ", specific=" + specific + ", perksAvailable=" + perksAvailable + ", skillLevelNeeded="
 				+ skillLevelNeeded + ", position=" + position + ", activated=" + activated + "]";
+	}
+	
+	public Integer getQueryPosition() {
+		int chainPriority = this.getPosition();
+		Map<String, Integer> subsets = this.skill.getSubsets();
+		for (String s: subsets.keySet()) {
+			if (this.name.contains(s))
+				chainPriority += subsets.get(s);
+		}
+		if (this.getSpecific() && this.getEssential()) {
+			chainPriority += 20;
+			chainPriority += this.getActivated();
+		}
+		else if (this.getPerksAvailable() + this.getActivated() > 1) {
+			chainPriority += 10;
+			chainPriority += this.getPerksAvailable() + this.getActivated();
+		}
+		return chainPriority;
 	}
 
 }

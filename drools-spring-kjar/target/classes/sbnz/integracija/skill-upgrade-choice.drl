@@ -10,26 +10,51 @@ import sbnz.integracija.example.enums.Orientation
 declare SkillChoice
 	skill: Skill
 	player: Player
+	level: Integer
 end
 
 rule "New player level reached"
 	when
 		$p: Player((Math.floor(level) > Math.floor(level-0.1)) && level != 1.0 && level != 100, $skills: skills)
 		accumulate(
-			Skill($rank: getQueryPosition()) from $skills,
+			Skill(getQueryPosition() != 0, $rank: getQueryPosition()) from $skills,
 			$min: min($rank)
 		)
-		$s: Skill(getQueryPosition() == $min) from $skills
+		accumulate(
+			Skill(getQueryPosition() == $min, $l: this) from $skills,
+			$list: collectList($l)
+		)
 	then
-	
-		insert(new SkillChoice($s, $p));
+		insert(new SkillChoice((Skill)$list.get(0), $p, ((Skill)$list.get(0)).getLevel()));
 end
 
 rule "Skill selected for level-up"
-	no-loop
+	no-loop true
 	when
-		$sc: SkillChoice($skill: skill, $player: player)
+		$sc: SkillChoice($skill: skill, $player: player, $availables: skill.getAvailables())
+		accumulate(
+			SkillNode($rank: getQueryPosition()) from $availables,
+			$max: max($rank)
+		)
+		accumulate(
+			SkillNode(getQueryPosition() == $max, $l: this) from $availables,
+			$list: collectList($l)
+		)
+		eval($list.size() <= 1)
 	then
-		
-		delete($sc);
+		insert((SkillNode)$list.get(0));
 end
+
+rule "Skill node selected for next perk"
+	no-loop true
+	when
+		$sn: SkillNode($p: skill.getPlayer(), $perks: activated, $available: perksAvailable)
+	then
+		$sn.setSkillLevelNeeded((100/($available+$perks))*($perks+1));
+		$sn.setActivated($perks+1);
+		$sn.setPerksAvailable($available-1);
+		System.out.println("New player level reached");
+		System.out.println("Skill "+$sn.getName()+" level: "+$sn.getPerksAvailable());
+		update($p);
+end
+

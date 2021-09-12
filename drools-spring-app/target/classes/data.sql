@@ -72,15 +72,15 @@ insert into skill_node (id, skill_id, name, description, activated, essential, s
 	(29, 3, 'Novice Destruction', 'Cast Novice level Destruction spells for half magicka', 0, true, false, 1, 15, 1),
 	(30, 3, 'Destruction Dual Casting', 'Dual casting an Destruction spell overcharges the effects into an even more powerful version', 0, true, false, 1, 20, 2),
 	(31, 3, 'Apprentice Destruction', 'Cast Apprentice level Destruction spells for half magicka', 0, true, false, 1, 25, 2),
-	(32, 3, 'Augmented Flames', 'Fire spells do 25% more damage', 0, true, true, 2, 30, 3),
+	(32, 3, 'Augmented Fire', 'Fire spells do 25% more damage', 0, true, true, 2, 30, 3),
 	(33, 3, 'Augmented Frost', 'Frost spells do 25% more damage', 0, true, true, 2, 30, 3),
 	(34, 3, 'Augmented Shock', 'Shock spells do 25% more damage', 0, true, true, 2, 30, 3),
 	(35, 3, 'Impact', 'Most destruction spells will stagger an opponent when dual cast', 0, false, false, 1, 40, 4),
 	(36, 3, 'Rune Master', 'Can place runes five times farther away', 0, false, false, 1, 40, 4),
 	(37, 3, 'Adept Destruction', 'Cast Adept level Destruction spells for half magicka', 0, true, false, 1, 50, 5),
-	(38, 3, 'Intense Flames', 'Fire damage causes targets to flee if their health is low', 0, true, true, 1, 50, 5),
-	(39, 3, 'Deep Freeze', 'Frost damage paralyzes targets if their health is low', 0, true, true, 1, 60, 6),
-	(40, 3, 'Disintegrate', 'Shock damage disintegrates targets if their health is low', 0, true, true, 1, 70, 7),
+	(38, 3, 'Fire : Intense Flames', 'Fire damage causes targets to flee if their health is low', 0, true, true, 1, 50, 5),
+	(39, 3, 'Frost : Deep Freeze', 'Frost damage paralyzes targets if their health is low', 0, true, true, 1, 60, 6),
+	(40, 3, 'Shock : Disintegrate', 'Shock damage disintegrates targets if their health is low', 0, true, true, 1, 70, 7),
 	(41, 3, 'Expert Destruction', 'Cast Expert level Destruction spells for half magicka', 0, true, false, 1, 75, 7),
 	(42, 3, 'Master Destruction', 'Cast Master level Destruction spells for half magicka', 0, true, false, 1, 100, 8);
 	
@@ -160,30 +160,30 @@ insert into skill_node (id, skill_id, name, description, activated, essential, s
 	(99, 9, 'Disarming Bash', 'Chance to disarm when power bashing (50% chance)', 0, true, false, 1, 70, 4),
 	(100, 9, 'Shield Charge', 'Sprinting with a shield raised knocks down most targets', 0, false, false, 1, 100, 5);
 
---two-handed
-insert into skill_node (id, skill_id, name, description, activated, essential, specific, perks_available, skill_level_needed, position) values
-	(101, 10, 'Barbarian', 'Two-Handed weapons do 20% more damage', 0, true, false, 5, 0, 1),
-	(102, 10, 'Champions Stance', 'Power attacks with two-handed weapons cost 25% less stamina', 0, false, false, 1, 20, 2),
-	(103, 10, 'Limbsplitter', 'Attacks with battle axes cause extra bleeding damage', 0, true, true, 3, 30, 3),
-	(104, 10, 'Deep Wounds', 'Attacks with greatswords have a 10% chance of doing critical damage', 0, true, true, 3, 30, 3),
-	(105, 10, 'Skull Crusher', 'Attacks with warhammers ignore 25% of armor', 0, true, true, 3, 30, 3),
-	(106, 10, 'Devastating Blow', 'Standing power attacks do 25% bonus damage with a chance to decapitate your enemies', 0, true, false, 1, 50, 4),
-	(107, 10, 'Great Critical Charge', 'Can do a two-handed power attack while sprinting that does double critical damage', 0, false, false, 1, 50, 4),
-	(108, 10, 'Sweep', 'Sideways power attacks with two-handed weapons hit all targets in front of you', 0, false, false, 1, 70, 5),
-	(109, 10, 'Warmaster', 'Backwards power attack has a 25% chance to paralyze the target', 0, false, false, 1, 100, 6);
-
 --one-handed
 insert into skill_node (id, skill_id, name, description, activated, essential, specific, perks_available, skill_level_needed, position) values
-	(110, 11, 'Armsman', 'One-handed weapons do 20% more damage', 0, true, false, 5, 0, 1),
-	(111, 11, 'Fighting Stance', 'Power attacks with one-handed weapons cost 25% less stamina', 0, false, false, 1, 20, 2),
-	(112, 11, 'Hack and Slash', 'Attacks with war axes cause extra bleeding damage', 0, true, true, 3, 30, 3),
-	(113, 11, 'Bone Breaker', 'Attacks with maces ignore 25% of armor', 0, true, true, 3, 30, 3),
-	(114, 11, 'Bladesman', 'Attacks with swords have a 10% chance of doing critical damage', 0, true, true, 3, 30, 3),
-	(115, 11, 'Dual Flurry', 'Dual wielding attacks are 20% faster ', 0, true, true, 2, 30, 3),
-	(116, 11, 'Savage Strike', 'Standing power attacks do 25% bonus damage with a chance to decapitate your enemies', 0, true, false, 1, 50, 4),
-	(117, 11, 'Critical Charge', 'Can do a one-handed power attack while sprinting that does double critical damage', 0, false, false, 1, 50, 4),
-	(118, 11, 'Dual Savagery', 'Dual wielding power attacks do 50% bonus damage', 0, false, false, 1, 70, 5),
-	(119, 11, 'Warmaster', 'Backwards power attack has a 25% chance to paralyze the target', 0, false, false, 1, 100, 6);
+	(110, 10, 'Armsman', 'One-handed weapons do 20% more damage', 0, true, false, 5, 0, 1),
+	(111, 10, 'Fighting Stance', 'Power attacks with one-handed weapons cost 25% less stamina', 0, false, false, 1, 20, 2),
+	(112, 10, 'Axe : Hack and Slash', 'Attacks with war axes cause extra bleeding damage', 0, true, true, 3, 30, 3),
+	(113, 10, 'Mace : Bone Breaker', 'Attacks with maces ignore 25% of armor', 0, true, true, 3, 30, 3),
+	(114, 10, 'Sword : Bladesman', 'Attacks with swords have a 10% chance of doing critical damage', 0, true, true, 3, 30, 3),
+	(115, 10, 'Dual Flurry', 'Dual wielding attacks are 20% faster ', 0, true, true, 2, 30, 3),
+	(116, 10, 'Savage Strike', 'Standing power attacks do 25% bonus damage with a chance to decapitate your enemies', 0, true, false, 1, 50, 4),
+	(117, 10, 'Critical Charge', 'Can do a one-handed power attack while sprinting that does double critical damage', 0, false, false, 1, 50, 4),
+	(118, 10, 'Dual Savagery', 'Dual wielding power attacks do 50% bonus damage', 0, false, false, 1, 70, 5),
+	(119, 10, 'Warmaster', 'Backwards power attack has a 25% chance to paralyze the target', 0, false, false, 1, 100, 6);
+
+--two-handed
+insert into skill_node (id, skill_id, name, description, activated, essential, specific, perks_available, skill_level_needed, position) values
+	(101, 11, 'Barbarian', 'Two-Handed weapons do 20% more damage', 0, true, false, 5, 0, 1),
+	(102, 11, 'Champions Stance', 'Power attacks with two-handed weapons cost 25% less stamina', 0, false, false, 1, 20, 2),
+	(103, 11, 'Battleaxe: Limbsplitter', 'Attacks with battle axes cause extra bleeding damage', 0, true, true, 3, 30, 3),
+	(104, 11, 'Greatsword : Deep Wounds', 'Attacks with greatswords have a 10% chance of doing critical damage', 0, true, true, 3, 30, 3),
+	(105, 11, 'Warhammer : Skull Crusher', 'Attacks with warhammers ignore 25% of armor', 0, true, true, 3, 30, 3),
+	(106, 11, 'Devastating Blow', 'Standing power attacks do 25% bonus damage with a chance to decapitate your enemies', 0, true, false, 1, 50, 4),
+	(107, 11, 'Great Critical Charge', 'Can do a two-handed power attack while sprinting that does double critical damage', 0, false, false, 1, 50, 4),
+	(108, 11, 'Sweep', 'Sideways power attacks with two-handed weapons hit all targets in front of you', 0, false, false, 1, 70, 5),
+	(109, 11, 'Warmaster', 'Backwards power attack has a 25% chance to paralyze the target', 0, false, false, 1, 100, 6);
 
 --archery
 insert into skill_node (id, skill_id, name, description, activated, essential, specific, perks_available, skill_level_needed, position) values
