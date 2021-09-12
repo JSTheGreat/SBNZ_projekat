@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import sbnz.integracija.example.enums.Orientation;
 import sbnz.integracija.example.enums.SkillType;
 
@@ -31,7 +33,7 @@ public class Skill {
 	@Column(nullable = false)
 	private Integer level;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "skill")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "skill")
 	private Set<SkillNode> nodes;
 	
 	@Column(nullable = false)
@@ -135,8 +137,47 @@ public class Skill {
 		return "Skill [id=" + id + ", subsets=" + subsets + ", name=" + name + ", level=" + level + ", type=" + type
 				+ ", priority=" + priority + ", orientation=" + orientation + "]";
 	}
+	
 	public void incSubset(String subset) {
 		this.subsets.put(subset, this.subsets.get(subset)+1);		
+	}
+	
+	public Boolean hasAvailable() {
+		for (SkillNode node: this.getNodes()) {
+			if (node.getPerksAvailable() > 0 && node.getSkillLevelNeeded() <= this.getLevel())
+				return true;
+		}
+		return false;
+	}
+	
+	public Boolean hasEssential() {
+		for (SkillNode node: this.getNodes()) {
+			if (node.getPerksAvailable() > 0 && node.getSkillLevelNeeded() <= this.getLevel()
+					&& node.getEssential())
+				return true;
+		}
+		return false;
+	}
+	
+	public Boolean isPlayersClass() {
+		if (this.getOrientation() == this.getPlayer().getRole())
+			return true;
+		return false;
+	}
+	
+	@Transactional
+	public Double getQueryPosition() {
+		double chainPriority = 0.0;
+		if (!this.hasAvailable())
+			return chainPriority;
+		chainPriority += this.getPriority();
+		if (this.getType() == SkillType.DEFENSE)
+			chainPriority += 0.25;
+		else if (this.getType() == SkillType.ASSIST) 
+			chainPriority += 0.5;
+		if (!this.isPlayersClass() && !this.hasEssential())
+			chainPriority += 3.0;
+		return chainPriority;
 	}
 			
 }

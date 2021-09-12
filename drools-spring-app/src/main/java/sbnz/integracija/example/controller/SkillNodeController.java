@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sbnz.integracija.example.dto.SkillNodeDTO;
 import sbnz.integracija.example.model.SkillNode;
-import sbnz.integracija.example.service.KieService;
 import sbnz.integracija.example.service.SkillNodeService;
 
 @RestController
@@ -25,9 +24,6 @@ public class SkillNodeController {
 	
 	@Autowired
 	private SkillNodeService service;
-	
-	@Autowired
-	private KieService kieService;
 		
 	@RequestMapping(value="/{skillId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SkillNodeDTO>> getAllBySkill(@PathVariable Integer skillId){

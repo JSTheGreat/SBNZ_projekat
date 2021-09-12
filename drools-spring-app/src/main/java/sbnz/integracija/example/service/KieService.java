@@ -29,6 +29,27 @@ public class KieService {
 		return player;
 	}
 	
+//	public void setForQueries(Player player) {
+//		for (Skill skill: player.getSkills()) {
+//			this.setForQuery(skill);
+//		}
+//	}
+//	
+//	public void setForQuery(Skill skill) {
+//		FactType type = kieSession.getKieBase().getFactType("sbnz.integracija", "SkillChoice");
+//		try {
+//			Object instance = type.newInstance();
+//			type.set(instance, "skill", skill);
+//			type.set(instance, "ranking", skill.getQueryPosition());
+//			System.out.println("Skill: " + skill.getName() + " - ranking" + skill.getQueryPosition());
+//			kieSession.insert(instance);
+//		} catch (InstantiationException e) {
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
 	public Skill incSkill(Skill skill) {
 		kieSession.insert(skill);
 		kieSession.fireAllRules();

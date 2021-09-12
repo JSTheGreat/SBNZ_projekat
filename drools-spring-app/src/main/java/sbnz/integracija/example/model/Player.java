@@ -129,6 +129,14 @@ public class Player {
 		}
 	}
 	
+	public Skill findSkill(String name) {
+		for (Skill skill: this.skills) {
+			if (skill.getName().equals(name))
+				return skill;
+		}
+		return null;
+	}
+	
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", race=" + race + ", role=" + role + ", level=" + level + "]";

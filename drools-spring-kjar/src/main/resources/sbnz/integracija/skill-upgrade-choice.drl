@@ -1,0 +1,35 @@
+package sbnz.integracija
+
+import sbnz.integracija.example.model.Skill
+import sbnz.integracija.example.model.SkillNode
+import sbnz.integracija.example.model.Player
+
+import sbnz.integracija.example.enums.SkillType
+import sbnz.integracija.example.enums.Orientation
+
+declare SkillChoice
+	skill: Skill
+	player: Player
+end
+
+rule "New player level reached"
+	when
+		$p: Player((Math.floor(level) > Math.floor(level-0.1)) && level != 1.0 && level != 100, $skills: skills)
+		accumulate(
+			Skill($rank: getQueryPosition()) from $skills,
+			$min: min($rank)
+		)
+		$s: Skill(getQueryPosition() == $min) from $skills
+	then
+	
+		insert(new SkillChoice($s, $p));
+end
+
+rule "Skill selected for level-up"
+	no-loop
+	when
+		$sc: SkillChoice($skill: skill, $player: player)
+	then
+		
+		delete($sc);
+end
